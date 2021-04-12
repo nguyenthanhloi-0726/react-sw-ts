@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { loadingSelector } from 'store/selectors/rootSelector'
+import { useShallowEqualSelector } from 'store/hooks'
+
+import Header from 'layout/Header'
+import Main from 'layout/Main'
+import Footer from 'layout/Footer'
+import Loading from 'components/Loading'
+
+import './App.scss'
+
+const AppLoading: React.FC = () => {
+  const loading = useShallowEqualSelector(loadingSelector)
+
+  return <Loading show={loading} />
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      <Main />
+      <Footer />
+
+      <AppLoading />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

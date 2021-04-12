@@ -1,0 +1,39 @@
+@import '_variable.scss';
+@import '_mixin.scss';
+
+.container {
+  // position: relative;
+  // width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mediaQueryMax($screenSmall) {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  @include mediaQuery($screenSmall, $screenMedium) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  @include mediaQuery($screenMedium, $screenLarge) {
+    padding-right: 36px;
+    padding-left: 36px;
+  }
+
+  @include mediaQuery($screenLarge, $screenXLarge) {
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+
+  @include mediaQuery($screenXLarge, $screenXXLarge) {
+    padding-right: 64px;
+    padding-left: 64px;
+  }
+
+  @include mediaQueryMin($screenXXLarge) {
+    width: 1472px; //$screenXXLarge - 64px * 2
+    max-width: 1472px; //$screenXXLarge - 64px * 2
+  }
+}
