@@ -1,5 +1,6 @@
 import isEqual from 'lodash/isEqual'
+import cloneDeep from 'lodash/cloneDeep'
 
-export { isEqual }
+export { isEqual, cloneDeep }
 
-export default { isEqual }
+export default { isEqual, cloneDeep }

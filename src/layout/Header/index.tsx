@@ -1,6 +1,6 @@
 import React from 'react'
 import useShallowEqualSelector from 'store/hooks/useShallowEqualSelector'
-import { layoutSelector } from 'store/selectors/layoutSelector'
+import { layoutSelector } from 'store/selectors/layout'
 import { Link, NavLink } from 'react-router-dom'
 
 import Logo from 'logo.svg'

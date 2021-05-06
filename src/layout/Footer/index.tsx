@@ -1,6 +1,6 @@
 import React from 'react'
 import { useShallowEqualSelector } from 'store/hooks'
-import { layoutSelector } from 'store/selectors/layoutSelector'
+import { layoutSelector } from 'store/selectors/layout'
 
 type Props = {}
 

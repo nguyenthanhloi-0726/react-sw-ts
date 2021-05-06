@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import { setLoading } from 'store/actions/root'
-import { useAppDispatch } from 'store/hooks'
-import { getUsers as getUsersAPI } from 'api/users'
-import { ensureArray, errorHandle } from 'utils/helpers'
+import React from 'react'
+import { errorHandle } from 'utils/helpers'
+import { IDLE } from 'store/constants'
+import { usersSelector } from 'store/selectors/users'
+import { useUnwrapAsyncThunk } from 'store/hooks/useUnwrapAsyncThunk'
+import { getUsers as getUsersAction, setStatus } from 'store/slices/apiSlice'
+import { useAppDispatch, useShallowEqualSelector } from 'store/hooks'
 
 import './style.scss'
 
@@ -20,22 +22,30 @@ type TUser = {
   phone: string
 }
 
-const Users: React.FC<Props> = props => {
+const Users: React.FC<Props> = () => {
+  const unwrap = useUnwrapAsyncThunk()
   const dispatch = useAppDispatch()
 
-  const [users, setUsers] = useState<[] | undefined>(undefined)
+  const { data: users } = useShallowEqualSelector(usersSelector)
 
   const getUsers = async () => {
     try {
-      dispatch(setLoading(true))
-
-      const { data } = await getUsersAPI()
-
-      setUsers(ensureArray(data))
+      await unwrap(getUsersAction())
     } catch (error) {
       errorHandle(error)
-    } finally {
-      dispatch(setLoading(false))
+    }
+  }
+
+  const clearCacheUsers = async () => {
+    try {
+      dispatch(
+        setStatus({
+          name: 'users',
+          status: IDLE
+        })
+      )
+    } catch (error) {
+      errorHandle(error)
     }
   }
 
@@ -74,6 +84,7 @@ const Users: React.FC<Props> = props => {
   return (
     <div className="users">
       <button onClick={getUsers}>Get users</button>
+      <button onClick={clearCacheUsers}>Clear cache users</button>
       <br />
       {users !== undefined && (
         <>

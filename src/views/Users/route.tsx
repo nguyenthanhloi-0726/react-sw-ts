@@ -6,7 +6,7 @@ const route: TRoute[] = [
     path: '/users',
     name: 'Users',
     component: lazy(() => {
-      return new Promise(resolve => setTimeout(resolve, 1000)).then(
+      return new Promise(resolve => setTimeout(resolve, 200)).then(
         () => import('.')
       )
     })

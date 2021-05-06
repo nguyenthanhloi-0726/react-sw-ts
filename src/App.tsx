@@ -1,5 +1,5 @@
 import React from 'react'
-import { loadingSelector } from 'store/selectors/rootSelector'
+import { loadingSelector } from 'store/selectors/root'
 import { useShallowEqualSelector } from 'store/hooks'
 
 import Header from 'layout/Header'
