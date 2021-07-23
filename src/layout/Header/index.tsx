@@ -1,7 +1,8 @@
 import React from 'react'
-import useShallowEqualSelector from 'store/hooks/useShallowEqualSelector'
-import { layoutSelector } from 'store/selectors/layout'
 import { Link, NavLink } from 'react-router-dom'
+import { layoutSelector } from 'store/selectors/layout'
+import useShallowEqualSelector from 'store/hooks/useShallowEqualSelector'
+import LangSwitch from 'components/LanguageSwitcher'
 
 import Logo from 'logo.svg'
 
@@ -33,6 +34,7 @@ const Header: React.FC<Props> = props => {
             <NavLink activeClassName="active" to="/welcome-page">
               Welcome Page
             </NavLink>
+            <LangSwitch />
           </div>
         </div>
       </div>

@@ -24,10 +24,12 @@
   }
 
   &__nav {
-    display: flex;
     height: 100%;
+    display: flex;
+    align-items: center;
 
     a {
+      height: 100%;
       display: flex;
       align-items: center;
       align-items: center;
